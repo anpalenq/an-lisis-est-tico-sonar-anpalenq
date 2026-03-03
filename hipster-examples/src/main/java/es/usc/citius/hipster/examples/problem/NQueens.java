@@ -18,7 +18,8 @@ package es.usc.citius.hipster.examples.problem;
 
 
 import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
+import java.security.SecureRandom;
 
 /**
  * <p>
@@ -49,7 +50,7 @@ public class NQueens {
     public NQueens(int size) {
         this.queens = new int[size];
         // Initialize randomly
-        Random r = new Random();
+        SecureRandom r = new SecureRandom();
         for (int i = 0; i < size; i++) {
             this.queens[i] = r.nextInt(size);
         }
