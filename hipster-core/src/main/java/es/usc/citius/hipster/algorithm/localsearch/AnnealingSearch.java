@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.*;
+import java.security.SecureRandom;
 
 import es.usc.citius.hipster.algorithm.Algorithm;
 import es.usc.citius.hipster.model.HeuristicNode;
@@ -202,5 +203,6 @@ public class AnnealingSearch<A, S, N extends HeuristicNode<A, S, Double, N>> ext
 		N estimate(N node, NodeExpander<A, S, N> nodeExpander);
 	}
 }
+
 
 
