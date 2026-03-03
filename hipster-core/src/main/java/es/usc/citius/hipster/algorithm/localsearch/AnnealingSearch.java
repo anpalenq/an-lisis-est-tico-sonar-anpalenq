@@ -151,12 +151,13 @@ public class AnnealingSearch<A, S, N extends HeuristicNode<A, S, Double, N>> ext
 			if (curTemp > minTemp) {
 				N newNode = null;
 				// we add a loop to increase the effect of a change of alpha.
+				SecureRandom secureRand = new SecureRandom();
 				for (int i = 0; i < 100; i++) {
 					N randSuccessor = successorFinder.estimate(currentNode, nodeExpander);
 					Double score = randSuccessor.getScore();
-					if (acceptanceProbability.compute(bestScore, score, curTemp) > Math.random()) {
-						newNode = randSuccessor;
-						bestScore = score;
+					if (acceptanceProbability.compute(bestScore, score, curTemp) > secureRand.nextDouble()) {
+					    newNode = randSuccessor;
+					    bestScore = score;
 					}
 				}
 				if (newNode != null) {
@@ -201,4 +202,5 @@ public class AnnealingSearch<A, S, N extends HeuristicNode<A, S, Double, N>> ext
 		N estimate(N node, NodeExpander<A, S, N> nodeExpander);
 	}
 }
+
 
